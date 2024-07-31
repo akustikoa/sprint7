@@ -1,0 +1,22 @@
+.custom-img {
+  max-width: 200px;
+}
+.custom-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header.d-flex {
+  align-items: center;
+}
+.header.d-flex.flex-column {
+  align-items: flex-end;
+}
