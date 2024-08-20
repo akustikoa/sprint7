@@ -1,4 +1,4 @@
 export interface Nau {
     name: string;
-    moedel: string;
+    model: string;
 }
