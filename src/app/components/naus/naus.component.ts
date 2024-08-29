@@ -8,21 +8,25 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './naus.component.html',
-  styleUrl: './naus.component.scss'
+  styleUrls: ['./naus.component.scss']
 })
 export class NausComponent implements OnInit {
   naus = signal<Nau[]>([]);
+  nauSeleccionada = signal<Nau | null>(null);
+  nauImatgeUrl = signal<string | null>(null);
 
   constructor(private nausService: ServeiNausService) { }
 
   ngOnInit(): void {
-    this.nausService.getNaus().subscribe((data: any) => {
-      this.naus.set(data.results);
+    this.nausService.getNaus().subscribe((data: Nau[]) => {
+      this.naus.set(data); // Ara 'data' és un array de naus
       console.log('Naus carregades:', this.naus());
     });
   }
-  // getNaveSeleccionada(item: Nau) {
-  //   // Lògica per manejar la nau seleccionada
-  //   console.log(item);
-  // }
+
+  showNauDetail(nau: Nau): void {
+    this.nauSeleccionada.set(nau);
+    const nauId = nau.url.split('/').filter(Boolean).pop();
+    this.nauImatgeUrl.set(`https://starwars-visualguide.com/assets/img/starships/${nauId}.jpg`);
+  }
 }
