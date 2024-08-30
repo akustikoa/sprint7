@@ -1,20 +1,39 @@
-import { HttpClient } from '@angular/common/http'; //per fer peticions http get, post, etc.
-import { Injectable } from '@angular/core'; //marca una calsse com a servei 
-import { Observable } from 'rxjs'; // permet gestionar dades asíncrones com les dades que arriben de la petició http 
-import { map } from 'rxjs/operators'; // permet transofrmar i extreure les dades que arriben de l'observable 
-import { Nau } from '../interfaces/nau'; // interfície
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Nau } from '../interfaces/nau';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServeiNausService {
-  private apiUrl = 'https://swapi.dev/api/starships'; // si és privada només s'utilitza en aquesta classe
+  private apiUrl = 'https://swapi.dev/api/starships';
+  private nextUrl: string | null = this.apiUrl;
+  private nausSubject = new BehaviorSubject<Nau[]>([]);
+  public naus$ = this.nausSubject.asObservable();
 
-  constructor(private http: HttpClient) { } // permet fer peticions http dins de la classe 
+  constructor(private http: HttpClient) { }
+
+  getFirstPage(): void {
+    this.http.get<{ results: Nau[], next: string | null }>(this.apiUrl).pipe(
+      tap(response => {
+        this.nextUrl = response.next; // Actualitzem l'URL de la següent pàgina
+        this.nausSubject.next(response.results); // Carreguem la primera pàgina al subjecte
+      })
+    ).subscribe();
+  }
 
   getNaus(): Observable<Nau[]> {
-    return this.http.get<{ results: Nau[] }>(this.apiUrl).pipe(
-      map(response => response.results) // Amb map treiem de la resposta de l'api (reponse) només l'array de naus 
+    if (!this.nextUrl) return of([]); // Si no hi ha més pàgines, retornem un array buit
+
+    return this.http.get<{ results: Nau[], next: string | null }>(this.nextUrl).pipe(
+      tap(response => {
+        this.nextUrl = response.next; // Actualitzem l'URL de la següent pàgina
+        const currentNaus = this.nausSubject.value;
+        this.nausSubject.next([...currentNaus, ...response.results]); // Afegim les noves naus a les existents
+      }),
+      map(response => response.results)
     );
   }
 }
