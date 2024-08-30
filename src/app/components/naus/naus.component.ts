@@ -21,8 +21,6 @@ export class NausComponent implements OnInit {
     this.nausService.naus$.subscribe((data: Nau[]) => {
       this.naus.set(data);
     });
-
-    this.nausService.getFirstPage(); // Carreguem la primera pàgina immediatament
   }
 
   mostraDetallNau(nau: Nau): void {
@@ -32,6 +30,6 @@ export class NausComponent implements OnInit {
   }
 
   loadMoreNaus(): void {
-    this.nausService.getNaus().subscribe();
+    this.nausService.getMoreNaus().subscribe();
   }
 }

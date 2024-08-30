@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Nau } from '../interfaces/nau';
 
@@ -8,30 +8,32 @@ import { Nau } from '../interfaces/nau';
   providedIn: 'root'
 })
 export class ServeiNausService {
-  private apiUrl = 'https://swapi.dev/api/starships';
+  private apiUrl = 'https://swapi.py4e.com/api/starships';
   private nextUrl: string | null = this.apiUrl;
   private nausSubject = new BehaviorSubject<Nau[]>([]);
   public naus$ = this.nausSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getNaus(); // Carregar la primera pàgina automàticament quan s'inicialitza el servei
+  }
 
-  getFirstPage(): void {
+  private getNaus(): void {
     this.http.get<{ results: Nau[], next: string | null }>(this.apiUrl).pipe(
       tap(response => {
-        this.nextUrl = response.next; // Actualitzem l'URL de la següent pàgina
-        this.nausSubject.next(response.results); // Carreguem la primera pàgina al subjecte
+        this.nextUrl = response.next;
+        this.nausSubject.next(response.results);
       })
     ).subscribe();
   }
 
-  getNaus(): Observable<Nau[]> {
-    if (!this.nextUrl) return of([]); // Si no hi ha més pàgines, retornem un array buit
+  public getMoreNaus(): Observable<Nau[]> {
+    if (!this.nextUrl) return new Observable<Nau[]>(); // Si no hi ha més pàgines, no fem res
 
     return this.http.get<{ results: Nau[], next: string | null }>(this.nextUrl).pipe(
       tap(response => {
-        this.nextUrl = response.next; // Actualitzem l'URL de la següent pàgina
+        this.nextUrl = response.next;
         const currentNaus = this.nausSubject.value;
-        this.nausSubject.next([...currentNaus, ...response.results]); // Afegim les noves naus a les existents
+        this.nausSubject.next([...currentNaus, ...response.results]);
       }),
       map(response => response.results)
     );
