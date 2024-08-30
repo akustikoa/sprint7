@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, HostListener, OnInit, signal } from '@angular/core';
 import { ServeiNausService } from '../../sevices/servei.naus.service';
 import { Nau } from '../../interfaces/nau';
 import { CommonModule } from '@angular/common';
@@ -29,7 +29,14 @@ export class NausComponent implements OnInit {
     this.nauImatgeUrl.set(`https://starwars-visualguide.com/assets/img/starships/${nauId}.jpg`);
   }
 
-  loadMoreNaus(): void {
+  carregaMesNaus(): void {
     this.nausService.getMoreNaus().subscribe();
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(): void {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      this.carregaMesNaus();
+    }
   }
 }

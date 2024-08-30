@@ -1,9 +1,20 @@
 :host {
   background-color: #000;
   display: block;
+  min-height: 100vh;
 }
 
 .fitxes {
-  color: grey;
+  color: white;
   background-color: black;
+}
+.text-card {
+  color: #a4a4a4;
+}
+h2 {
+  color: #efefef;
+  margin-bottom: 2rem;
+}
+p {
+  color: #a4a4a4;
 }

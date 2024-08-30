@@ -20,3 +20,10 @@
 .header.d-flex.flex-column {
   align-items: flex-end;
 }
+.text-button {
+  color: #a4a4a4;
+  transition: color 0.3s;
+}
+.text-button:hover {
+  color: white;
+}

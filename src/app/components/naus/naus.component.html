@@ -1,28 +1,30 @@
 @if (!nauSeleccionada()) {
 <div class="fitxes d-flex flex-column align-items-center gap-1">
     @for (nau of naus(); track { $index }) {
-    <div class="card p-3 mt-3 text-secondary bg-dark" style="width: 40rem;" (click)="mostraDetallNau(nau)">
+    <div class="card text-card p-3 mt-3 bg-dark" style="width: 60rem;" (click)="mostraDetallNau(nau)">
         <strong>{{nau.name}}</strong>
         <span>{{nau.model}}</span>
     </div>
     }
 </div>
-<button (click)="loadMoreNaus()" class="btn btn-primary mt-3">View More</button>
+<button (click)="carregaMesNaus()" class="btn btn-primary mt-3">View More</button>
 } @else {
-<div class="row">
-    <div class="col-md-6 d-flex justify-content-center align-content-center">
-        <img [src]="nauImatgeUrl()" alt="Imatge nau" class="img-fluid" style="max-width: 100%; height: auto;" />
-    </div>
-    <div class="col-md-6">
-        <div class="details text-secondary bg-dark p-3">
-            <h2>{{nauSeleccionada()?.name}}</h2>
-            <p><strong>Model:</strong> {{nauSeleccionada()?.model}}</p>
-            <p><strong>Manufacturer:</strong> {{nauSeleccionada()?.manufacturer}}</p>
-            <p><strong>Cost in Credits:</strong> {{nauSeleccionada()?.cost_in_credits}}</p>
-            <p><strong>Length:</strong> {{nauSeleccionada()?.length}}</p>
-            <p><strong>Max Atmosphering Speed:</strong> {{nauSeleccionada()?.max_atmosphering_speed}}</p>
-            <p><strong>Crew:</strong> {{nauSeleccionada()?.crew}}</p>
-            <p><strong>Passengers:</strong> {{nauSeleccionada()?.passengers}}</p>
+<div style="background-color: black; padding-top: 3rem; overflow-x: hidden;">
+    <div class="row">
+        <div class="col-md-6 d-flex justify-content-center align-content-center">
+            <img [src]="nauImatgeUrl()" alt="Imatge nau" class="img-fluid" style="max-width: 100%; height: auto;" />
+        </div>
+        <div class="col-md-6 d-flex justify-content-start ">
+            <div class="details text-secondary p-3">
+                <h2>{{nauSeleccionada()?.name}}</h2>
+                <p><strong>Model:</strong> {{nauSeleccionada()?.model}}</p>
+                <p><strong>Manufacturer:</strong> {{nauSeleccionada()?.manufacturer}}</p>
+                <p><strong>Cost in Credits:</strong> {{nauSeleccionada()?.cost_in_credits}}</p>
+                <p><strong>Length:</strong> {{nauSeleccionada()?.length}}</p>
+                <p><strong>Max Atmosphering Speed:</strong> {{nauSeleccionada()?.max_atmosphering_speed}}</p>
+                <p><strong>Crew:</strong> {{nauSeleccionada()?.crew}}</p>
+                <p><strong>Passengers:</strong> {{nauSeleccionada()?.passengers}}</p>
+            </div>
         </div>
     </div>
 </div>
