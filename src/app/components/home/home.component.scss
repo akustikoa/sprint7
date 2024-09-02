@@ -5,3 +5,10 @@
 .custom-img {
   max-width: 300px;
 }
+.text-button {
+  color: #a4a4a4;
+  transition: color 0.3s;
+}
+.text-button:hover {
+  color: white;
+}
