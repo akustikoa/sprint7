@@ -20,6 +20,7 @@ export class NausComponent implements OnInit {
   ngOnInit(): void {
     this.nausService.naus$.subscribe((data: Nau[]) => {
       this.naus.set(data);
+      console.log(this.naus());
     });
   }
 
