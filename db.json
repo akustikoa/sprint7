@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "email": "xavierprat78@gmail.com",
+      "password": "$2a$10$qHmX6R6lYdoJuKOypjuI/.hrVxETluP4YM7aE2aeSAGzZsgUFe5Ny",
+      "id": 1
+    },
+    {
+      "email": "bernat@bernat.com",
+      "password": "$2a$10$29yn.14rs1YN2/Kg9EueauqgyYMKezk727kfDem.mkq058b2OS3e2",
+      "id": 2
+    },
+    {
+      "email": "xavier@gmail.com",
+      "password": "$2a$10$QbAL4iD2HYrxG/7urES/9esexl5yyNIk76mgcnuQwOtcD7LWouh6C",
+      "id": 3
+    },
+    {
+      "email": "julie@julie.com",
+      "password": "$2a$10$DMpQstdgJxuXXGTO/sVNmuGpMe/Vnx6cX1PJb9vteJ7xnihvO5czO",
+      "id": 4
+    }
+  ]
+}

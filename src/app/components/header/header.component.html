@@ -1,20 +1,27 @@
 <div class="container-fluid bg-black">
     <div class="row custom-header">
         <div class="col-12 position-relative">
-            <div class="header d-flex align-items-center justify-content-between p-3 ">
-                <img src="assets/starwars-logo.png" class="custom-img mx-auto ">
+            <div class="header d-flex align-items-center justify-content-between p-3">
+                <img src="assets/starwars-logo.png" class="custom-img mx-auto">
                 <div class="ml-auto position-absolute end-0">
-                    <button class="btn btn-link text-button text-decoration-none fw-medium">LOG
-                        IN</button><button class="btn btn-link  text-button text-decoration-none fw-medium">SIGN
-                        UP</button>
+                    @if (authService.isLoggedIn()) {
+                    <span class="text-white">Logat</span>
+                    <button class="btn btn-link text-button text-decoration-none fw-medium"
+                        (click)="logout()">Logout</button>
+                    } @else {
+                    <button class="btn btn-link text-button text-decoration-none fw-medium"
+                        [routerLink]="['/login']">LOG IN</button>
+                    <button class="btn btn-link text-button text-decoration-none fw-medium"
+                        [routerLink]="['/register']">SIGN UP</button>
+                    }
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-12 ">
+        <div class="col-12">
             <nav class="navbar bg-black">
-                <div class="container-fluid  ">
+                <div class="container-fluid">
                     <div class="d-flex w-100 justify-content-center border-bottom border-secondary pb-2">
                         <button class="btn btn-link text-button text-decoration-none fw-medium border border-0"
                             [routerLink]="['/home']">HOME</button>
