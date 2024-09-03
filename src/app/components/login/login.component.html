@@ -1,14 +1,18 @@
-<div class="container">
-    <h2>Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" formControlName="email">
+<div class="container bg-black custom-login">
+    <div class="row justify-content-center p-5">
+        <div class="col-4 text-login bg-dark p-4 rounded">
+            <h2 class="mb-4">Login</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="mb-3">
+                    <label for="email" class="form-label text-login">Email</label>
+                    <input type="email" id="email" formControlName="email" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label text-login">Password</label>
+                    <input type="password" id="password" formControlName="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-black mt-3">Login</button>
+            </form>
         </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" id="password" formControlName="password">
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+    </div>
 </div>
