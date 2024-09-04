@@ -2,6 +2,7 @@
     <div class="row justify-content-center p-5">
         <div class="col-4 text-login bg-dark p-4 rounded">
             <h2 class="mb-4">Login</h2>
+
             <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <div class="mb-3">
                     <label for="email" class="form-label text-login">Email</label>
@@ -11,6 +12,12 @@
                     <label for="password" class="form-label text-login">Password</label>
                     <input type="password" id="password" formControlName="password" class="form-control">
                 </div>
+
+                <!-- Mostrar el missatge d'error si hi ha credencials incorrectes -->
+                @if (errorMessage) {
+                <div class="alert alert-danger mt-3">{{ errorMessage }}</div>
+                }
+
                 <button type="submit" class="btn btn-black mt-3">Login</button>
             </form>
         </div>

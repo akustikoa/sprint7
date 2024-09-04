@@ -19,6 +19,11 @@
       "email": "julie@julie.com",
       "password": "$2a$10$DMpQstdgJxuXXGTO/sVNmuGpMe/Vnx6cX1PJb9vteJ7xnihvO5czO",
       "id": 4
+    },
+    {
+      "email": "xavier@xavier.com",
+      "password": "$2a$10$EWM7e1H6dHwqwOq9BMhTSO4sBlodOMpP0SICJa/AEE11l5mjd6njy",
+      "id": 5
     }
   ]
 }

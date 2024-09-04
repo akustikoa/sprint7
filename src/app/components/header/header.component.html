@@ -5,7 +5,7 @@
                 <img src="assets/starwars-logo.png" class="custom-img mx-auto">
                 <div class="ml-auto position-absolute end-0">
                     @if (authService.isLoggedIn()) {
-                    <button class="btn btn-link text-button text-decoration-none fw-medium" disabled>LOGAT</button>
+                    <button class="btn btn-link text-button text-decoration-none fw-medium" disabled>LOGGED IN</button>
                     <button class="btn btn-link text-button text-decoration-none fw-medium" (click)="logout()">LOG
                         OUT</button>
                     } @else {

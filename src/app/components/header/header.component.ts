@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { ServeiAuthService } from '../../sevices/servei.auth.service';
 
 @Component({
@@ -11,9 +11,10 @@ import { ServeiAuthService } from '../../sevices/servei.auth.service';
 })
 export class HeaderComponent {
 
-  constructor(public authService: ServeiAuthService) { }
+  constructor(public authService: ServeiAuthService, private router: Router) { }
 
   logout() {
-    this.authService.logout();
+    this.authService.logout(); // eliminem token i actualitzem l'estat
+    this.router.navigate(['/login']);
   }
 }
