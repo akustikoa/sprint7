@@ -6,16 +6,19 @@
         <span>{{nau.model}}</span>
     </div>
     }
+    <div style="width: 60rem;">
+        <button (click)="carregaMesNaus()" class="btn btn-dark btn-black fw-bold mt-4 mb-5">View More</button>
+    </div>
 </div>
-<button (click)="carregaMesNaus()" class="btn btn-primary mt-3">View More</button>
+
 } @else {
 <div style="background-color: black; padding-top: 3rem; overflow-x: hidden;">
     <div class="row">
         <div class="col-md-6 d-flex justify-content-center align-content-center">
             <img [src]="nauImatgeUrl()" alt="Imatge nau" class="img-fluid" style="max-width: 100%; height: auto;" />
         </div>
-        <div class="col-md-6 d-flex justify-content-start ">
-            <div class="details text-secondary p-3">
+        <div class="col-md-6 d-flex justify-content-center ">
+            <div class="details text-secondary p-3 bg-dark rounded-3 ">
                 <h2>{{nauSeleccionada()?.name}}</h2>
                 <p><strong>Model:</strong> {{nauSeleccionada()?.model}}</p>
                 <p><strong>Manufacturer:</strong> {{nauSeleccionada()?.manufacturer}}</p>
@@ -26,6 +29,11 @@
                 <p><strong>Passengers:</strong> {{nauSeleccionada()?.passengers}}</p>
             </div>
         </div>
+        <div class="d-flex flex-column align-items-center">
+            <button (click)="tornarLlistaNaus()" class="btn btn-dark btn-black fw-bold mt-4 mb-5 align-self-center"
+                style="width: 8rem;"><i class="bi bi-arrow-left custom-size me-2"> </i> BACK</button>
+        </div>
     </div>
 </div>
+
 }

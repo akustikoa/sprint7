@@ -30,6 +30,11 @@ export class NausComponent implements OnInit {
     this.nauImatgeUrl.set(`https://starwars-visualguide.com/assets/img/starships/${nauId}.jpg`);
   }
 
+  tornarLlistaNaus(): void {
+    this.nauSeleccionada.set(null);
+    this.nauImatgeUrl.set(null);
+  }
+
   carregaMesNaus(): void {
     this.nausService.getMoreNaus().subscribe();
   }
