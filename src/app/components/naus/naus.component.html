@@ -15,10 +15,11 @@
 <div style="background-color: black; padding-top: 3rem; overflow-x: hidden;">
     <div class="row">
         <div class="col-md-6 d-flex justify-content-center align-content-center">
-            <img [src]="nauImatgeUrl()" alt="Imatge nau" class="img-fluid" style="max-width: 100%; height: auto;" />
+            <img [src]="nauImatgeUrl()" alt="Imatge nau" class="img-fluid" style="max-width: 100%; height: auto;"
+                (error)="fallbackImage($event)">
         </div>
         <div class="col-md-6 d-flex justify-content-center ">
-            <div class="details text-secondary p-3 bg-dark rounded-3 ">
+            <div class="details p-3 bg-dark rounded-3" style="width: 40rem;">
                 <h2>{{nauSeleccionada()?.name}}</h2>
                 <p><strong>Model:</strong> {{nauSeleccionada()?.model}}</p>
                 <p><strong>Manufacturer:</strong> {{nauSeleccionada()?.manufacturer}}</p>

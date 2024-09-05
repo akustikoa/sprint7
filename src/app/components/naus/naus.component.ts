@@ -45,4 +45,10 @@ export class NausComponent implements OnInit {
       this.carregaMesNaus();
     }
   }
+
+  // Afegir la funció de fallback per carregar la imatge local si falla la imatge externa
+  fallbackImage(event: Event): void {
+    const element = event.target as HTMLImageElement;
+    element.src = 'assets/starships/default.jpg';  // Imatge local per defecte
+  }
 }
