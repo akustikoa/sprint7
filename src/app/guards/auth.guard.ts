@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       //Redirigeix a la pàgina de login i guarda la URL que intentava accedir
-      return this.router.createUrlTree(['/Login'], { queryParams: { redirectUrl: state.url } });
+      return this.router.createUrlTree(['/login'], { queryParams: { redirectUrl: state.url } });
     }
   }
 

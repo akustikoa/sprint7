@@ -1,5 +1,6 @@
 .custom-presentacio {
   min-height: calc(100vh - 220px);
+  min-width: calc(100vw);
 }
 
 .custom-img {
@@ -11,4 +12,9 @@
 }
 .text-button:hover {
   color: white;
+}
+.background-imatge {
+  background-image: url("/assets/background.webp");
+  background-size: cover;
+  background-position: center;
 }
