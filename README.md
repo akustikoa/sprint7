@@ -15,10 +15,10 @@ Consum de dades API: Interacció amb l'API de Star Wars ([swapi.dev](https://swa
 
 # Tecnologies Utilitzades
 
-TypeScript
-HTML5
-SCSS
-[Angular](https://angular.dev/installation) CLI version 18.1.2
+- TypeScript
+- HTML5
+- SCSS
+- [Angular](https://angular.dev/installation) CLI version 18.1.2
 
 # Requisits
 
@@ -29,17 +29,22 @@ npm install -g @angular/cli
 
 # Instal.lació
 
-Clona el repositori:
+1.Clona el repositori:
+
 git clone https://github.com/akustikoa/sprint7.git
 
-Entre al directori del projecte:
+2.Entre al directori del projecte:
+
 cd starwars
 
-Instal.la las dependències:
+3.Instal.la las dependències:
+
 npm install
 
-Executa el servidor de backend (JSON-SERVER):
+4.Executa el servidor de backend (JSON-SERVER):
+
 npx json-server-auth db.json
 
-Executa l'apliació Angular
+5.Executa l'apliació Angular
+
 ng serve -o
