@@ -22,29 +22,29 @@ Consum de dades API: Interacció amb l'API de Star Wars ([swapi.dev](https://swa
 
 # Requisits
 
-Node.js i npm instal.lats al teu sistema. Pots trovar-los a [nodejs.org](https://nodejs.org/en).
-Angular CLI instal.lat globalment. Pots instal.lar-lo amb el següent codi:
+- Node.js i npm instal.lats al teu sistema. Pots trovar-los a [nodejs.org](https://nodejs.org/en).
+- Angular CLI instal.lat globalment. Pots instal.lar-lo amb el següent codi:
 
 npm install -g @angular/cli
 
 # Instal.lació
 
-1.Clona el repositori:
+1. Clona el repositori:
 
-git clone https://github.com/akustikoa/sprint7.git
+   git clone https://github.com/akustikoa/sprint7.git
 
-2.Entre al directori del projecte:
+2. Entre al directori del projecte:
 
-cd starwars
+   cd starwars
 
-3.Instal.la las dependències:
+3. Instal.la las dependències:
 
-npm install
+   npm install
 
-4.Executa el servidor de backend (JSON-SERVER):
+4. Executa el servidor de backend (JSON-SERVER):
 
-npx json-server-auth db.json
+   npx json-server-auth db.json
 
-5.Executa l'apliació Angular
+5. Executa l'apliació Angular
 
-ng serve -o
+   ng serve -o
