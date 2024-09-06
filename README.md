@@ -25,7 +25,7 @@ Consum de dades API: Interacció amb l'API de Star Wars ([swapi.dev](https://swa
 - Node.js i npm instal.lats al teu sistema. Pots trovar-los a [nodejs.org](https://nodejs.org/en).
 - Angular CLI instal.lat globalment. Pots instal.lar-lo amb el següent codi:
 
-npm install -g @angular/cli
+  npm install -g @angular/cli
 
 # Instal.lació
 
