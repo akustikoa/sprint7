@@ -1,27 +1,39 @@
-# Starwars
+Star Wars
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
+Descripció 📄
+Aquest projcte és una aplicació web feta amb Angualr 18 que permet explorar un llistat de naus especials de l'unives Star Wars gràcies a l'API (swapi.dev).
+L'aplicació permet gestionar usuaris, on només els que s'han registrtat previament poden veure el llistat de naus i el detall de cada una gràcies a un
+sistema d'autenticació Json Web Tokens (JWT).
 
-## Development server
+Característiques ✨
+Exploració de Naus: Permet explorar informació detallada de diverses naus de Star Wars.
+Autenticació d'usuaris: Login i Register d'usuaris.
+Protecció de rutes: Navegació segura protegint rutes amb guards que necessiten autenticació.
+Consum de dades API: Interacció amb l'API de Star Wars ([swapi.dev](https://swapi.dev/)) i ([starwars-visualguide.com](https://starwars-visualguide.com/)) per a les imatges.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Tecnologías Utilizadas 💻
+TypeScript
+HTML5
+SCSS
+[Angular](https://angular.dev/installation) CLI version 18.1.2
 
-## Code scaffolding
+Requisits 📋
+Node.js i npm instal.lats al teu sistema. Pots trovar-los a [nodejs.org](https://nodejs.org/en).
+Angular CLI instal.lat globalment. Pots instal.lar-lo amb el següent codi:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+npm install -g @angular/cli
 
-## Build
+Instal.lació 🛠️
+Clona el repositori:
+git clone https://github.com/akustikoa/sprint7.git
+Entre al directori del projecte:
+cd starwars
+Instal.la las dependències:
+npm install
+Executa el servidor de backend (JSON-SERVER):
+npx json-server-auth db.json
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Executa l'apliació Angular ▶️
+Amb el codi:
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+ng serve -o
