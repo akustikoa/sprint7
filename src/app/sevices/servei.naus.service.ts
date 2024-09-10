@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, forkJoin } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Nau } from '../interfaces/nau';
 
@@ -37,5 +37,11 @@ export class ServeiNausService {
       }),
       map(response => response.results)
     );
+  }
+
+  public getPilots(pilotUrls: string[]): Observable<any[]> {
+    if (!pilotUrls.length) return new Observable<any[]>();
+    const pilotRequests = pilotUrls.map(url => this.http.get(url));
+    return forkJoin(pilotRequests);
   }
 }

@@ -8,4 +8,5 @@ export interface Nau {
     max_atmosphering_speed: string;
     crew: string;
     passengers: string;
+    pilots: string[];
 }
