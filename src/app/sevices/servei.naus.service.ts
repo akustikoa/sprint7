@@ -14,7 +14,7 @@ export class ServeiNausService {
   public naus$ = this.nausSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    this.getNaus(); // Carregar la primera pàgina automàticament quan s'inicialitza el servei
+    this.getNaus();
   }
 
   private getNaus(): void {
@@ -27,7 +27,7 @@ export class ServeiNausService {
   }
 
   public getMoreNaus(): Observable<Nau[]> {
-    if (!this.nextUrl) return new Observable<Nau[]>(); // Si no hi ha més pàgines, no fem res
+    if (!this.nextUrl) return new Observable<Nau[]>();
 
     return this.http.get<{ results: Nau[], next: string | null }>(this.nextUrl).pipe(
       tap(response => {
@@ -47,8 +47,8 @@ export class ServeiNausService {
 
   public getFilms(filmUrls: string[]): Observable<any[]> {
     if (!filmUrls.length) return new Observable<any[]>();
-    const filmRequests = filmUrls.map(url => this.http.get(url)); // Fer les peticions per a les pel·lícules
-    return forkJoin(filmRequests); // Espera que totes les peticions acaben
+    const filmRequests = filmUrls.map(url => this.http.get(url));
+    return forkJoin(filmRequests);
   }
 
 }

@@ -12,11 +12,12 @@ import { FilmComponent } from '../film/film.component';
   templateUrl: './naus.component.html',
   styleUrls: ['./naus.component.scss']
 })
+
 export class NausComponent implements OnInit {
   naus = signal<Nau[]>([]);
   nauSeleccionada = signal<Nau | null>(null);
   nauImatgeUrl = signal<string | null>(null);
-  pilots = signal<any[]>([]); //signal per els pilots
+  pilots = signal<any[]>([]);
   films = signal<any[]>([]);
 
   constructor(private nausService: ServeiNausService) { }
@@ -34,15 +35,15 @@ export class NausComponent implements OnInit {
     const nauId = nau.url.split('/').filter(Boolean).pop();
     this.nauImatgeUrl.set(`https://starwars-visualguide.com/assets/img/starships/${nauId}.jpg`);
 
-    if (nau.pilots.length) { //nau.pilots && nau.pilots.length
+    if (nau.pilots.length) {
       this.nausService.getPilots(nau.pilots).subscribe(pilots => {
-        this.pilots.set(pilots); //actualitza signal amb els pilots
+        this.pilots.set(pilots);
       });
     } else {
       this.pilots.set([]);
     }
 
-    // Obtenir les pel·lícules de la nau
+
     if (nau.films.length) {
       this.nausService.getFilms(nau.films).subscribe(films => {
         this.films.set(films);
@@ -69,7 +70,6 @@ export class NausComponent implements OnInit {
       this.carregaMesNaus();
     }
   }
-
 
   fallbackImage(event: Event): void {
     const element = event.target as HTMLImageElement;

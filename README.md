@@ -8,7 +8,7 @@ sistema d'autenticació Json Web Tokens (JWT).
 
 # Característiques
 
-Exploració de Naus: Permet explorar informació detallada de diverses naus de Star Wars.
+Exploració de Naus: Permet explorar informació detallada de diverses naus de Star Wars i veure els pilots i pel.lícules associades a aquesta.
 Autenticació d'usuaris: Login i Register d'usuaris.
 Protecció de rutes: Navegació segura protegint rutes amb guards que necessiten autenticació.
 Consum de dades API: Interacció amb l'API de Star Wars ([swapi.dev](https://swapi.dev/)) i ([starwars-visualguide.com](https://starwars-visualguide.com/)) per a les imatges.

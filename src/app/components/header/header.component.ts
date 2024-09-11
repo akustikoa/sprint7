@@ -14,7 +14,7 @@ export class HeaderComponent {
   constructor(public authService: ServeiAuthService, private router: Router) { }
 
   logout() {
-    this.authService.logout(); // eliminem token i actualitzem l'estat
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }
