@@ -44,4 +44,11 @@ export class ServeiNausService {
     const pilotRequests = pilotUrls.map(url => this.http.get(url));
     return forkJoin(pilotRequests);
   }
+
+  public getFilms(filmUrls: string[]): Observable<any[]> {
+    if (!filmUrls.length) return new Observable<any[]>();
+    const filmRequests = filmUrls.map(url => this.http.get(url)); // Fer les peticions per a les pel·lícules
+    return forkJoin(filmRequests); // Espera que totes les peticions acaben
+  }
+
 }

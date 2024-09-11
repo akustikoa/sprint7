@@ -3,11 +3,12 @@ import { ServeiNausService } from '../../sevices/servei.naus.service';
 import { Nau } from '../../interfaces/nau';
 import { CommonModule } from '@angular/common';
 import { PilotComponent } from '../pilot/pilot.component';
+import { FilmComponent } from '../film/film.component';
 
 @Component({
   selector: 'app-naus',
   standalone: true,
-  imports: [CommonModule, PilotComponent],
+  imports: [CommonModule, PilotComponent, FilmComponent],
   templateUrl: './naus.component.html',
   styleUrls: ['./naus.component.scss']
 })
@@ -16,6 +17,7 @@ export class NausComponent implements OnInit {
   nauSeleccionada = signal<Nau | null>(null);
   nauImatgeUrl = signal<string | null>(null);
   pilots = signal<any[]>([]); //signal per els pilots
+  films = signal<any[]>([]);
 
   constructor(private nausService: ServeiNausService) { }
 
@@ -27,6 +29,7 @@ export class NausComponent implements OnInit {
   }
 
   mostraDetallNau(nau: Nau): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.nauSeleccionada.set(nau);
     const nauId = nau.url.split('/').filter(Boolean).pop();
     this.nauImatgeUrl.set(`https://starwars-visualguide.com/assets/img/starships/${nauId}.jpg`);
@@ -37,6 +40,15 @@ export class NausComponent implements OnInit {
       });
     } else {
       this.pilots.set([]);
+    }
+
+    // Obtenir les pel·lícules de la nau
+    if (nau.films.length) {
+      this.nausService.getFilms(nau.films).subscribe(films => {
+        this.films.set(films);
+      });
+    } else {
+      this.films.set([]);
     }
   }
 
@@ -51,16 +63,16 @@ export class NausComponent implements OnInit {
     this.nausService.getMoreNaus().subscribe();
   }
 
-  @HostListener('window:scroll', ['$event']) // no em mostra el Hostlistener!!!!!!!!!!!!
+  @HostListener('window:scroll', ['$event'])
   onScroll(): void {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       this.carregaMesNaus();
     }
   }
 
-  // Afegir la funció de fallback per carregar la imatge local si falla la imatge externa
+
   fallbackImage(event: Event): void {
     const element = event.target as HTMLImageElement;
-    element.src = 'assets/starships/default.jpg';  // Imatge local per defecte
+    element.src = 'assets/starships/default.jpg';
   }
 }

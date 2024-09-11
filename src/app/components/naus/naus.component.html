@@ -12,14 +12,14 @@
 </div>
 
 } @else {
-<div style="background-color: black; padding-top: 10rem; overflow-x: hidden;">
+<div style="background-color: black; padding-top: 5rem; overflow-x: hidden;">
     <div class="row">
         <div class="col-md-6 d-flex justify-content-center align-content-center">
             <img [src]="nauImatgeUrl()" alt="Imatge nau" class="img-fluid" style="max-width: 100%; height: auto;"
                 (error)="fallbackImage($event)">
         </div>
         <div class="col-md-6 d-flex justify-content-center ">
-            <div class="details p-3 bg-dark rounded-3" style="width: 40rem;">
+            <div class="details p-3 bg-dark rounded-3 mb-5" style="width: 40rem;">
                 <h2>{{nauSeleccionada()?.name}}</h2>
                 <p><strong>Model:</strong> {{nauSeleccionada()?.model}}</p>
                 <p><strong>Manufacturer:</strong> {{nauSeleccionada()?.manufacturer}}</p>
@@ -28,15 +28,13 @@
                 <p><strong>Max Atmosphering Speed:</strong> {{nauSeleccionada()?.max_atmosphering_speed}}</p>
                 <p><strong>Crew:</strong> {{nauSeleccionada()?.crew}}</p>
                 <p><strong>Passengers:</strong> {{nauSeleccionada()?.passengers}}</p>
-
-                <!-- llista de pilots associats a la nau  -->
-
             </div>
         </div>
+        <!-- llista de pilots associats a la nau  -->
         @if (pilots().length > 0 ) {
         <div class="col-md-12 d-flex flex-column align-items-center ">
             <div>
-                <h3 class="mt-4 p-4">Pilots</h3>
+                <h3 class="mt-5 p-4">Pilots</h3>
             </div>
             <div class="d-flex flex-wrap">
                 @for (pilot of pilots(); track pilot.url) {
@@ -46,6 +44,20 @@
 
         </div>
         }
+
+        @if (films().length > 0) {
+        <div class="col-md-12 d-flex flex-column align-items-center">
+            <div>
+                <h3 class="mt-5 p-4">Films</h3>
+            </div>
+            <div class="d-flex flex-wrap">
+                @for (film of films(); track film.url) {
+                <app-film [film]="film"></app-film>
+                }
+            </div>
+        </div>
+        }
+
         <div class="d-flex flex-column align-items-center mt-5">
             <button (click)="tornarLlistaNaus()" class="btn btn-dark btn-black fw-bold mt-4 mb-5 align-self-center"
                 style="width: 8rem;"><i class="bi bi-arrow-left custom-size me-2"> </i> BACK</button>

@@ -9,4 +9,5 @@ export interface Nau {
     crew: string;
     passengers: string;
     pilots: string[];
+    films: string[];
 }
