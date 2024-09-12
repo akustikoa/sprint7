@@ -4,6 +4,7 @@ import { Nau } from '../../interfaces/nau';
 import { CommonModule } from '@angular/common';
 import { PilotComponent } from '../pilot/pilot.component';
 import { FilmComponent } from '../film/film.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-naus',
@@ -20,9 +21,17 @@ export class NausComponent implements OnInit {
   pilots = signal<any[]>([]);
   films = signal<any[]>([]);
 
-  constructor(private nausService: ServeiNausService) { }
+  constructor(
+    private nausService: ServeiNausService,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.router.events.subscribe(() => {
+      if (this.router.url === '/naus') {
+        this.resetNauDetalls();
+      }
+    });
+
     this.nausService.naus$.subscribe((data: Nau[]) => {
       this.naus.set(data);
       console.log(this.naus());
@@ -74,5 +83,12 @@ export class NausComponent implements OnInit {
   fallbackImage(event: Event): void {
     const element = event.target as HTMLImageElement;
     element.src = 'assets/starships/default.jpg';
+  }
+
+  resetNauDetalls(): void {
+    this.nauSeleccionada.set(null);
+    this.nauImatgeUrl.set(null);
+    this.pilots.set([]);
+    this.films.set([]);
   }
 }
