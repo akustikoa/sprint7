@@ -20,6 +20,7 @@ export class NausComponent implements OnInit {
   nauImatgeUrl = signal<string | null>(null);
   pilots = signal<any[]>([]);
   films = signal<any[]>([]);
+  viewMoreNaus = signal<boolean>(true);
 
   constructor(
     private nausService: ServeiNausService,
