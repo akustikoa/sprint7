@@ -6,9 +6,11 @@
         <span>{{nau.model}}</span>
     </div>
     }
+    @if (viewMoreNaus()){
     <div style="width: 60rem;">
         <button (click)="carregaMesNaus()" class="btn btn-dark btn-black fw-bold mt-4 mb-5">View More</button>
     </div>
+    }
 </div>
 
 } @else {

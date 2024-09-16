@@ -1,20 +1,35 @@
 <div class="container bg-black custom-register">
     <div class="row justify-content-center p-5">
-        <div class="col-4 text-register bg-dark p-4 rounded-4">
+        <div class="col-4 text-register bg-dark p-4 rounded">
             <h2 class="mb-4">Register</h2>
             <form [formGroup]="registerForm" (ngSubmit)="register()">
                 <div class="mb-3">
                     <label for="email" class="form-label text-register">Email</label>
                     <input type="email" id="email" formControlName="email" class="form-control">
+                    @if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')) {
+                    <div class="text-danger">L'email és obligatori.</div>
+                    }
+                    @if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')) {
+                    <div class="text-danger">Introdueix un email vàlid.</div>
+                    }
                 </div>
+
                 <div class="mb-3">
                     <label for="password" class="form-label text-register">Password</label>
                     <input type="password" id="password" formControlName="password" class="form-control">
+                    @if (registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')) {
+                    <div class="text-danger">La contrasenya és obligatòria.</div>
+                    }
+                    @if (registerForm.get('password')?.touched && registerForm.get('password')?.hasError('minlength')) {
+                    <div class="text-danger">La contrasenya ha de tenir almenys 6 caràcters.</div>
+                    }
                 </div>
+
+                <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+
                 @if (errorMessage()) {
-                <div class="alert alert-danger">{{ errorMessage() }}</div>
+                <div class="alert alert-danger mt-3">{{ errorMessage() }}</div>
                 }
-                <button type="submit" class="btn btn-black mt-3">Register</button>
             </form>
         </div>
     </div>

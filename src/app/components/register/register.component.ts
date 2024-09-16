@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { ServeiAuthService } from '../../sevices/servei.auth.service'; // Importar el ServeiAuthService
@@ -25,8 +25,8 @@ export class RegisterComponent {
     private authService: ServeiAuthService // Injecta ServeiAuthService aquí
   ) {
     this.registerForm = this.fb.group({
-      email: [''],
-      password: ['']
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 

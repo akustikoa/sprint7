@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServeiAuthService } from '../../sevices/servei.auth.service';
 import { catchError } from 'rxjs/operators';
@@ -25,9 +25,10 @@ export class LoginComponent {
     private route: ActivatedRoute,
     private authService: ServeiAuthService
   ) {
+
     this.loginForm = this.fb.group({
-      email: [''],
-      password: ['']
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
     // Recuperar la URL de redirecció, si n'hi ha
@@ -44,7 +45,7 @@ export class LoginComponent {
         // Capturar l'error quan el login falla
         catchError(err => {
           // Si hi ha un error, mostrar el missatge d'error
-          this.errorMessage = 'El mail o la contrasenya són incorrectes';
+          this.errorMessage = 'l\'email o la contrasenya són incorrectes';
           return of(null);  // Retornar observable buit per no trencar el flux
         })
       )

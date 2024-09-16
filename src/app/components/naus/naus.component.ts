@@ -37,6 +37,12 @@ export class NausComponent implements OnInit {
       this.naus.set(data);
       console.log(this.naus());
     });
+
+
+    //subscribe per actualitzar el botó view more
+    this.nausService.viewMoreNaus.subscribe((viewMore: boolean) => {
+      this.viewMoreNaus.set(viewMore);
+    });
   }
 
   mostraDetallNau(nau: Nau): void {

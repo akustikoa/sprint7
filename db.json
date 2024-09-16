@@ -64,6 +64,11 @@
       "email": "nou6@nou6.com",
       "password": "$2a$10$YZZJ2U6DXHtjBqgQ93876.5PuWyniwedi4zEqRdaWXQF.XTj7YE3C",
       "id": 13
+    },
+    {
+      "email": "nou7@nou7.com",
+      "password": "$2a$10$SXNNeO6G9E.5fFG8pLfd5unrTnUeGlKV2xbZfZTfUQIMXcwvi.wGS",
+      "id": 14
     }
   ]
 }
