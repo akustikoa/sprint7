@@ -24,6 +24,46 @@
       "email": "xavier@xavier.com",
       "password": "$2a$10$EWM7e1H6dHwqwOq9BMhTSO4sBlodOMpP0SICJa/AEE11l5mjd6njy",
       "id": 5
+    },
+    {
+      "email": "gus@gus.gus",
+      "password": "$2a$10$T//79B0ZPm8LCpUhm.KdCOpnporqVd/9mF.3yuSMwnT5bqVbX2ud2",
+      "id": 6
+    },
+    {
+      "email": "nou@nou.com",
+      "password": "$2a$10$Zys4Pxunc9jcjLQSul3/Duw79nNYKLK71ctpyBd0FF8DOwe4kMnxO",
+      "id": 7
+    },
+    {
+      "email": "nou1@nou1.com",
+      "password": "$2a$10$mrU8VWCH2cww5IBVDqwvEe.00xIGeo5eTxlV9wPExzOpNwl47U56m",
+      "id": 8
+    },
+    {
+      "email": "nou2@nou2.com",
+      "password": "$2a$10$Fr7L1kn6C9ex7GNSv8J5tOj4gREW.b85pOFsYFOThhUqaeretF.FO",
+      "id": 9
+    },
+    {
+      "email": "nou3@nou3.com",
+      "password": "$2a$10$yFw4m0HfGKSK.EKe1Hvu2.V6PG1V5QX7pF6KsFlIbIwLkw/gFXIAW",
+      "id": 10
+    },
+    {
+      "email": "nou4@nou4.com",
+      "password": "$2a$10$tDAnHKyB9sRN4dmHFpoV9.C9nYtPIqXEpWkJz0s8CQ/xiow6htbla",
+      "id": 11
+    },
+    {
+      "email": "nou5@nou5.com",
+      "password": "$2a$10$u0SZNzIyOvD5f8Ftt7Xa1uLtVDlCdaZU8.Zww4azQ1j4Opnud1BcW",
+      "id": 12
+    },
+    {
+      "email": "nou6@nou6.com",
+      "password": "$2a$10$YZZJ2U6DXHtjBqgQ93876.5PuWyniwedi4zEqRdaWXQF.XTj7YE3C",
+      "id": 13
     }
   ]
 }

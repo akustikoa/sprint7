@@ -4,6 +4,7 @@ import { Injectable, signal } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ServeiAuthService {
   // Signal per controlar si l'usuari està logat
   isLoggedIn = signal<boolean>(false);

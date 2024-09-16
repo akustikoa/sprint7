@@ -3,19 +3,27 @@ import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
+import { ServeiAuthService } from '../../sevices/servei.auth.service'; // Importar el ServeiAuthService
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+
 })
 export class RegisterComponent {
   registerForm: FormGroup;
   errorMessage = signal<string | null>(null);
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  // Injectar ServeiAuthService al constructor
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private authService: ServeiAuthService // Injecta ServeiAuthService aquí
+  ) {
     this.registerForm = this.fb.group({
       email: [''],
       password: ['']
@@ -29,29 +37,31 @@ export class RegisterComponent {
     this.http.get<any[]>(`http://localhost:3000/users?email=${email}`)
       .pipe(
         catchError(err => {
-          // Gestionar error en la crida de verificació
           this.errorMessage.set('Error de connexió. Torna-ho a intentar més tard.');
           return of([]);
         })
       )
       .subscribe(users => {
         if (users.length > 0) {
-          // Si l'usuari ja existeix, mostrar missatge d'error
           this.errorMessage.set('Aquest email ja està registrat.');
         } else {
           // Si no existeix, registrar l'usuari i iniciar sessió
           this.http.post('http://localhost:3000/register', { email, password })
             .pipe(
               catchError(err => {
-                // Gestionar error en la crida de registre
                 this.errorMessage.set('Hi ha hagut un error durant el registre. Torna-ho a intentar.');
                 return of(null);
               })
             )
             .subscribe((response: any) => {
-              if (response) {
-                localStorage.setItem('token', response.accessToken);
-                this.router.navigate(['/home']);
+              if (response && response.accessToken) {
+                // Crida al ServeiAuthService per marcar com a logat
+                this.authService.login(response.accessToken);
+
+                // Redirigir a la pàgina de naus
+                this.router.navigate(['/naus']);
+              } else {
+                this.errorMessage.set('Error en la resposta del servidor.');
               }
             });
         }
