@@ -35,11 +35,8 @@ export class NausComponent implements OnInit {
 
     this.nausService.naus$.subscribe((data: Nau[]) => {
       this.naus.set(data);
-      console.log(this.naus());
     });
 
-
-    //subscribe per actualitzar el botó view more
     this.nausService.viewMoreNaus.subscribe((viewMore: boolean) => {
       this.viewMoreNaus.set(viewMore);
     });
@@ -59,7 +56,6 @@ export class NausComponent implements OnInit {
       this.pilots.set([]);
     }
 
-
     if (nau.films.length) {
       this.nausService.getFilms(nau.films).subscribe(films => {
         this.films.set(films);
@@ -68,7 +64,6 @@ export class NausComponent implements OnInit {
       this.films.set([]);
     }
   }
-
 
   tornarLlistaNaus(): void {
     this.nauSeleccionada.set(null);

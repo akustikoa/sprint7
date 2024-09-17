@@ -10,7 +10,7 @@ describe('NausComponent', () => {
     await TestBed.configureTestingModule({
       imports: [NausComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(NausComponent);
     component = fixture.componentInstance;

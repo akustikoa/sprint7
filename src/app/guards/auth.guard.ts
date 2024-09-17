@@ -14,11 +14,9 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
-    // Comprova si l'usuari està logat
     if (this.authService.isLoggedIn()) {
       return true;
     } else {
-      //Redirigeix a la pàgina de login i guarda la URL que intentava accedir
       return this.router.createUrlTree(['/login'], { queryParams: { redirectUrl: state.url } });
     }
   }
